@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Treinamento: Teclado e Atalhos</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b2333;--mut:#5d6b85;--bd:#d5dbe8;--ac:#2f5bea;--ok:#1f9d55;--okbg:#e5f6ec;--er:#d93a3a;--erbg:#fdeaea;--edit:#2f5bea;--mod:#8b5cf6;--lock:#f59e0b;--nav:#1f9d55;--fn:#0ea5a5;--sys:#d93a3a;--p:#8a96ad;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#1a2133;--tx:#e8ecf5;--mut:#9aa7c2;--bd:#2c3752;--ac:#6c8cff;--ok:#3ecf7e;--okbg:#14301f;--er:#ff6b6b;--erbg:#3a1a1a}}
+:root[data-theme="dark"]{--bg:#0f1420;--card:#1a2133;--tx:#e8ecf5;--mut:#9aa7c2;--bd:#2c3752;--ac:#6c8cff;--ok:#3ecf7e;--okbg:#14301f;--er:#ff6b6b;--erbg:#3a1a1a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;padding:16px}
+.w{max-width:860px;margin:0 auto}
+header{text-align:center;padding:24px 8px}
+header h1{margin:0 0 6px;font-size:clamp(1.6rem,4vw,2.3rem)}
+header p{margin:0;color:var(--mut)}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:clamp(16px,3.5vw,28px);margin-bottom:16px}
+h2{margin:0 0 10px;font-size:1.3rem}
+h2 span{display:inline-block;background:var(--ac);color:#fff;border-radius:99px;width:30px;height:30px;line-height:30px;text-align:center;font-size:.95rem;margin-right:8px}
+.sc{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mut);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+kbd{display:inline-block;border:1px solid var(--bd);border-bottom-width:3px;border-radius:6px;padding:1px 8px;font:600 .88em ui-monospace,Consolas,monospace;background:var(--bg);white-space:nowrap}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.b{border:1px solid var(--bd);border-radius:12px;padding:14px}
+.tip{margin-top:12px;padding:12px 14px;border-left:5px solid var(--ok);background:var(--okbg);border-radius:8px}
+.warn{margin-top:12px;padding:12px 14px;border-left:5px solid var(--er);background:var(--erbg);border-radius:8px}
+.lg{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:.88rem;color:var(--mut)}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto}
+svg text{fill:var(--tx);font-family:system-ui,sans-serif}
+ul{margin:6px 0;padding-left:20px}
+a{color:var(--ac);font-weight:600}
+.f{text-align:center;color:var(--mut);padding:8px 0 24px}
+.back{display:inline-block;margin:4px 0 0;color:var(--ac);font-weight:600;text-decoration:none;font-size:.95rem}
+.back:hover{text-decoration:underline}
+.key{cursor:pointer;outline:none}
+.key:hover rect,.key:focus-visible rect{fill-opacity:.5;stroke-width:2.5}
+#ov{position:fixed;inset:0;background:rgba(10,15,30,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
+#ov.on{display:flex}
+#md{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:16px;max-width:440px;width:100%;padding:22px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.35);outline:none;max-height:90vh;overflow-y:auto}
+#md h3{margin:0 36px 2px 0;font-size:1.3rem}
+#md .cat{font-size:.78rem;color:var(--mut);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+#md .x{position:absolute;top:8px;right:10px;border:0;background:transparent;color:var(--mut);font-size:1.8rem;cursor:pointer;line-height:1;padding:4px 8px}
+#md .x:hover{color:var(--er)}
+#md .esc{margin-top:14px;color:var(--mut);font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="w">
+<a class="back" href="index.html">← Voltar ao início</a>
+<header><h1>⌨️ Teclado e Atalhos</h1><p>Material de treinamento de informática básica</p></header>
+
+<section class="c">
+<h2><span>1</span>Conhecendo o teclado</h2>
+<p>As teclas se dividem em grupos com funções parecidas. Observe o mapa colorido: cada cor representa uma categoria que você vai estudar neste material. <b>Clique ou toque em uma tecla especial</b> para abrir uma explicação rápida.</p>
+<div class="sc"><div style="min-width:620px" id="kb"></div></div>
+<div class="lg">
+<span><i style="background:var(--edit)"></i>Edição</span><span><i style="background:var(--mod)"></i>Modificadoras</span><span><i style="background:var(--lock)"></i>Travas</span><span><i style="background:var(--nav)"></i>Navegação</span><span><i style="background:var(--fn)"></i>Função (F1 a F12)</span><span><i style="background:var(--sys)"></i>Especiais</span><span><i style="background:var(--p)"></i>Letras, números e símbolos</span>
+</div>
+</section>
+
+<section class="c">
+<h2><span>2</span>Teclas de edição</h2>
+<div class="sc"><table>
+<tr><th>Tecla</th><th>O que faz</th><th>Para lembrar</th></tr>
+<tr><td><kbd>Backspace</kbd></td><td>Apaga o caractere à <b>esquerda</b> do cursor.</td><td>"Volta" apagando.</td></tr>
+<tr><td><kbd>Delete</kbd></td><td>Apaga o caractere à <b>direita</b> do cursor. No Explorador de Arquivos, envia o item para a lixeira.</td><td>Apaga o que está à frente.</td></tr>
+<tr><td><kbd>Enter</kbd></td><td>Confirma comandos ou inicia uma nova linha/parágrafo em um editor de texto.</td><td>Tem duas funções, conforme o contexto.</td></tr>
+<tr><td><kbd>Tab</kbd></td><td>Move o cursor para o próximo campo de um formulário ou cria recuo em textos.</td><td>Avança de campo em campo.</td></tr>
+<tr><td><kbd>Espaço</kbd></td><td>Insere um espaço entre caracteres ou palavras.</td><td>A maior tecla do teclado.</td></tr>
+<tr><td><kbd>Insert</kbd></td><td>Alterna entre o modo <b>inserção</b> (o texto novo empurra o existente) e <b>sobrescrita</b>.</td><td>Insere sem apagar o que já existe.</td></tr>
+</table></div>
+<div class="warn"><b>Pegadinha clássica:</b> Backspace apaga à esquerda e Delete apaga à direita. Não confunda!</div>
+</section>
+
+<section class="c">
+<h2><span>3</span>Modificadoras e travas</h2>
+<p>As teclas <kbd>Ctrl</kbd>, <kbd>Alt</kbd> e <kbd>Shift</kbd> são <b>teclas modificadoras</b>: sozinhas quase não fazem nada, mas mudam o efeito de outras teclas quando usadas em combinação (como <kbd>Ctrl</kbd>+<kbd>C</kbd>).</p>
+<div class="g2">
+<div class="b"><b>Shift</b><br>Escreve maiúsculas <b>só enquanto está pressionada</b>. Ao soltar, volta ao normal. Use para uma única letra maiúscula.</div>
+<div class="b"><b>Caps Lock</b><br>É uma <b>trava</b>: aperta uma vez para ativar as maiúsculas contínuas e outra vez para desativar. Não é preciso segurar.</div>
+<div class="b"><b>Alt</b><br>Dá acesso a opções alternativas e menus em combinação com outras teclas, como <kbd>Alt</kbd>+<kbd>Tab</kbd>.</div>
+<div class="b"><b>Num Lock</b><br>Ativa ou desativa o teclado numérico. Ligado, digita números. Desligado, funciona como setas e navegação.</div>
+</div>
+</section>
+
+<section class="c">
+<h2><span>4</span>Teclas de navegação</h2>
+<div class="g2">
+<div class="b"><kbd>Home</kbd> leva o cursor ao <b>início da linha</b>.<br><kbd>Ctrl</kbd>+<kbd>Home</kbd> vai ao início do documento.</div>
+<div class="b"><kbd>End</kbd> leva o cursor ao <b>final da linha</b>.<br><kbd>Ctrl</kbd>+<kbd>End</kbd> vai ao final do documento.</div>
+</div>
+<p>As <b>teclas direcionais</b> (← ↑ ↓ →) movem o cursor ou navegam pela tela. Veja na figura como cada tecla age a partir da posição do cursor:</p>
+<svg viewBox="0 0 640 210" role="img" aria-label="Ação de Backspace, Delete, Home e End a partir do cursor">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<rect x="30" y="50" width="580" height="46" rx="8" style="fill:var(--bg);stroke:var(--bd)"/>
+<text x="300" y="82" text-anchor="end" font-size="24" font-family="ui-monospace,Consolas,monospace">Treina</text>
+<text x="308" y="82" font-size="24" font-family="ui-monospace,Consolas,monospace">mento</text>
+<rect x="302" y="56" width="2.5" height="34" style="fill:var(--ac)"/>
+<text x="303" y="40" text-anchor="middle" font-size="12" style="fill:var(--ac)">cursor</text>
+<g style="color:var(--er)"><line x1="296" y1="112" x2="190" y2="112" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar)"/><text x="190" y="134" font-size="13" font-weight="700" text-anchor="middle" fill="currentColor" style="fill:var(--er)">Backspace apaga</text></g>
+<g style="color:var(--ok)"><line x1="312" y1="112" x2="418" y2="112" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar)"/><text x="418" y="134" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--ok)">Delete apaga</text></g>
+<g style="color:var(--mod)"><line x1="296" y1="170" x2="40" y2="170" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar)"/><text x="40" y="196" font-size="13" font-weight="700" style="fill:var(--mod)">Home: início da linha</text></g>
+<g style="color:var(--nav)"><line x1="312" y1="170" x2="600" y2="170" stroke="currentColor" stroke-width="2.5" marker-end="url(#ar)"/><text x="600" y="196" font-size="13" font-weight="700" text-anchor="end" style="fill:var(--nav)">End: final da linha</text></g>
+</svg>
+</section>
+
+<section class="c">
+<h2><span>5</span>Teclas de função e especiais</h2>
+<div class="sc"><table>
+<tr><th>Tecla</th><th>Função</th></tr>
+<tr><td><kbd>F1</kbd> a <kbd>F12</kbd></td><td>São as <b>teclas de função</b>. Cada programa pode atribuir ações diferentes a elas.</td></tr>
+<tr><td><kbd>F1</kbd></td><td>Abre a <b>ajuda</b> do programa.</td></tr>
+<tr><td><kbd>F5</kbd></td><td><b>Atualiza</b> uma página da internet ou uma janela do Explorador de Arquivos.</td></tr>
+<tr><td><kbd>Esc</kbd></td><td>Cancela uma ação ou fecha menus e caixas de diálogo (de <i>Escape</i>).</td></tr>
+<tr><td><kbd>Print Screen</kbd></td><td><b>Captura a imagem da tela.</b> Apesar do nome, não imprime nada.</td></tr>
+<tr><td><kbd>⊞ Windows</kbd></td><td>Abre o <b>menu Iniciar</b> e serve de base para atalhos, como <kbd>⊞</kbd>+<kbd>E</kbd>.</td></tr>
+<tr><td>Teclas mortas</td><td>No teclado ABNT2, as teclas de acentuação (´ ` ~ ^ ¨) não mostram nada sozinhas e se combinam com a letra seguinte: <kbd>´</kbd> + <kbd>a</kbd> = á. O <b>ç</b> tem tecla própria.</td></tr>
+</table></div>
+</section>
+
+<section class="c">
+<h2><span>6</span>Atalhos essenciais</h2>
+<div class="sc"><table>
+<tr><th>Atalho</th><th>O que faz</th></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td>Copiar o item selecionado</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td><td>Colar</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>X</kbd></td><td>Recortar</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Desfazer a última ação (<kbd>Ctrl</kbd>+<kbd>Y</kbd> refaz)</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>Salvar o documento ou arquivo</td></tr>
+<tr><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td>Imprimir (abre a janela de impressão)</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td>Alternar entre programas e janelas abertas</td></tr>
+<tr><td><kbd>⊞</kbd>+<kbd>E</kbd></td><td>Abrir o Explorador de Arquivos</td></tr>
+<tr><td><kbd>F5</kbd></td><td>Atualizar página ou janela</td></tr>
+</table></div>
+<div class="tip"><b>Dica:</b> salve com frequência usando <kbd>Ctrl</kbd>+<kbd>S</kbd>. É o hábito que mais evita perder trabalho.</div>
+</section>
+
+<section class="c">
+<h2><span>7</span>Resumo e pegadinhas</h2>
+<ul>
+<li><b>Backspace</b> = esquerda | <b>Delete</b> = direita.</li>
+<li><b>Shift</b> precisa ficar pressionada | <b>Caps Lock</b> é uma trava que se liga e desliga.</li>
+<li><b>Ctrl, Alt e Shift</b> são teclas modificadoras, não teclas de função e nem numéricas.</li>
+<li><b>F1</b> abre a ajuda | <b>F5</b> atualiza.</li>
+<li><b>Print Screen</b> captura a tela, não imprime.</li>
+<li><b>Home</b> vai ao início da linha | <b>End</b> vai ao final da linha.</li>
+<li><b>Num Lock</b> liga e desliga o teclado numérico.</li>
+</ul>
+</section>
+
+<div class="f">Pronto para testar o que aprendeu? <a href="quiz-informatica.html">Faça o quiz →</a><br><a class="back" href="index.html">← Voltar ao início</a></div>
+</div>
+
+<div id="ov"><div id="md" role="dialog" aria-modal="true" aria-labelledby="mt" tabindex="-1"><button class="x" id="cl" aria-label="Fechar">×</button><h3 id="mt"></h3><div class="cat" id="mc"></div><div id="mb"></div><div class="esc">Feche com o botão × ou pressionando <kbd>Esc</kbd>.</div></div></div>
+<script>
+const E=function(t,c,p,d){return[t,c,p+(d?'<div class=tip>'+d+'</div>':'')]};
+const INFO={
+'Esc':E('Esc (Escape)','Tecla especial','Cancela uma ação em andamento e fecha menus, caixas de diálogo e janelas flutuantes.','Use o Esc para sair de um menu sem escolher nada.'),
+'PrtSc':E('Print Screen','Tecla especial','Captura a imagem da tela e a guarda na área de transferência, pronta para colar em outro programa com Ctrl+V. Apesar do nome, não imprime nada.','No Windows, Windows+Shift+S abre a ferramenta de recorte de tela.'),
+'Backspace':E('Backspace','Tecla de edição','Apaga o caractere à esquerda do cursor, voltando uma posição.','Não confunda: o Delete apaga à direita do cursor.'),
+'Delete':E('Delete','Tecla de edição','Apaga o caractere à direita do cursor. No Explorador de Arquivos, envia o item selecionado para a lixeira.','Não confunda: o Backspace apaga à esquerda do cursor.'),
+'Enter':E('Enter','Tecla de edição','Confirma comandos ou inicia uma nova linha (parágrafo) em um editor de texto.','Tem duas funções, conforme o contexto.'),
+'Tab':E('Tab','Tecla de edição','Move o cursor para o próximo campo de um formulário ou cria um recuo (tabulação) em textos.','Combinada com o Alt, alterna entre janelas: Alt+Tab.'),
+'Espaço':E('Espaço (Space)','Tecla de edição','Insere um espaço entre caracteres ou palavras. É a maior tecla do teclado.',''),
+'Insert':E('Insert','Tecla de edição','Alterna entre o modo inserção (o texto novo empurra o existente) e o modo sobrescrita (o texto novo substitui o existente).','No modo inserção, você digita sem apagar o que já existe.'),
+'Caps Lock':E('Caps Lock','Tecla de trava','Ativa as letras maiúsculas de forma contínua. Pressione uma vez para ligar e outra para desligar.','Para uma única maiúscula, prefira o Shift.'),
+'Num Lock':E('Num Lock','Tecla de trava','Ativa ou desativa o teclado numérico. Ligado, o teclado numérico digita números. Desligado, funciona como setas e teclas de navegação.',''),
+'Shift':E('Shift','Tecla modificadora','Escreve letras maiúsculas enquanto estiver pressionada. Ao soltar, volta ao normal. Também dá acesso ao símbolo superior das teclas com dois caracteres.','Ctrl, Alt e Shift são as teclas modificadoras.'),
+'Ctrl':E('Ctrl (Control)','Tecla modificadora','Sozinha não faz nada visível, mas muda o efeito de outras teclas: Ctrl+C copia, Ctrl+V cola, Ctrl+Z desfaz, Ctrl+S salva e Ctrl+P imprime.','Ctrl, Alt e Shift são as teclas modificadoras.'),
+'Alt':E('Alt (Alternate)','Tecla modificadora','Dá acesso a opções alternativas e menus em combinação com outras teclas. Exemplo: Alt+Tab alterna entre programas e janelas abertas.','Ctrl, Alt e Shift são as teclas modificadoras.'),
+'⊞':E('Tecla Windows','Tecla especial','Abre o menu Iniciar do Windows e serve de base para vários atalhos, como Windows+E, que abre o Explorador de Arquivos.',''),
+'Home':E('Home','Tecla de navegação','Posiciona o cursor no início da linha.','Ctrl+Home leva ao início do documento.'),
+'End':E('End','Tecla de navegação','Posiciona o cursor no final da linha.','Ctrl+End leva ao final do documento.'),
+'´':E('Teclas mortas','Acentuação','As teclas de acentuação (´ ` ~ ^ ¨) não mostram nada sozinhas: elas se combinam com a letra seguinte. Exemplo: ´ + a = á e ~ + o = õ.','No teclado ABNT2, o Ç tem tecla própria.')
+};
+INFO['~']=INFO['´'];
+['↑','←','↓','→'].forEach(function(a){INFO[a]=E('Teclas direcionais','Tecla de navegação','As setas movem o cursor ou navegam pela tela para cima, para baixo, para a esquerda e para a direita.','')});
+for(var n=1;n<=12;n++){INFO['F'+n]=E('F'+n,'Tecla de função','Faz parte das teclas de função (F1 a F12). A ação de cada uma depende do programa em uso.','')}
+INFO.F1=E('F1','Tecla de função','Abre a ajuda do programa que está em uso.','É o padrão na maioria dos programas.');
+INFO.F2=E('F2','Tecla de função','No Explorador de Arquivos, renomeia o item selecionado.','A ação das teclas de função depende do programa.');
+INFO.F5=E('F5','Tecla de função','Atualiza uma página da internet ou uma janela do Explorador de Arquivos.','');
+INFO.F11=E('F11','Tecla de função','Na maioria dos navegadores, entra e sai do modo de tela cheia.','A ação das teclas de função depende do programa.');
+const U=40;let s="";
+function K(x,y,w,l,c,h){h=h||1;const W=w*U-4,H=h*U-4,len=l.length;
+const fs=len<=2?14:len<=4?11:w>=1.5?10:len>=8?7:8;
+s+=(INFO[l]?'<g class="key" data-k="'+l+'" tabindex="0" role="button" aria-label="Tecla '+l+'">':'<g>')+'<rect x="'+x*U+'" y="'+y+'" width="'+W+'" height="'+H+'" rx="6" fill-opacity=".22" style="fill:var(--'+c+');stroke:var(--'+c+')"/><text x="'+(x*U+W/2)+'" y="'+(y+H/2)+'" text-anchor="middle" dominant-baseline="central" font-size="'+fs+'" font-weight="600">'+l+'</text></g>';}
+function R(y,x,a){a.forEach(function(k){if(typeof k==="number"){x+=k;return}K(x,y,k[1],k[0],k[2]);x+=k[1];});}
+function P(str){return str.split("").map(function(c){return[c,1,"p"]})}
+K(0,0,1,"Esc","sys");
+R(0,2,[0].concat([1,2,3,4].map(function(n){return["F"+n,1,"fn"]}),[.5],[5,6,7,8].map(function(n){return["F"+n,1,"fn"]}),[.5],[9,10,11,12].map(function(n){return["F"+n,1,"fn"]})));
+K(15.5,0,1,"PrtSc","sys");
+R(50,0,P("'1234567890-=").concat([["Backspace",2,"edit"]]));
+R(90,0,[["Tab",1.5,"edit"]].concat(P("QWERTYUIOP´[")));
+R(130,0,[["Caps Lock",1.5,"lock"]].concat(P("ASDFGHJKLÇ~]")));
+K(13.5,90,1.5,"Enter","edit",2);
+R(170,0,[["Shift",1.25,"mod"]].concat(P("\\ZXCVBNM,.;/"),[["Shift",1.75,"mod"]]));
+R(210,0,[["Ctrl",1.5,"mod"],["⊞",1.5,"sys"],["Alt",1.5,"mod"],["Espaço",7.5,"edit"],["Alt",1.5,"mod"],["Ctrl",1.5,"mod"]]);
+K(15.5,50,1,"Insert","edit");K(16.5,50,1,"Home","nav");K(17.5,50,1,"Num Lock","lock");
+K(15.5,90,1,"Delete","edit");K(16.5,90,1,"End","nav");
+K(16.5,170,1,"↑","nav");K(15.5,210,1,"←","nav");K(16.5,210,1,"↓","nav");K(17.5,210,1,"→","nav");
+document.getElementById("kb").innerHTML='<svg viewBox="0 0 740 250" role="img" aria-label="Mapa do teclado com as teclas coloridas por categoria">'+s+'</svg>';
+const ov=document.getElementById("ov"),md=document.getElementById("md"),mt=document.getElementById("mt"),mc=document.getElementById("mc"),mb=document.getElementById("mb");let last=null;
+function openK(k,el){const d=INFO[k];mt.textContent=d[0];mc.textContent=d[1];mb.innerHTML=d[2];ov.classList.add("on");last=el;md.scrollTop=0;md.focus();}
+function closeK(){ov.classList.remove("on");if(last){last.focus();}}
+document.querySelectorAll(".key").forEach(function(g){
+ g.addEventListener("click",function(){openK(g.getAttribute("data-k"),g)});
+ g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openK(g.getAttribute("data-k"),g)}});
+});
+document.getElementById("cl").addEventListener("click",closeK);
+ov.addEventListener("click",function(e){if(e.target===ov)closeK()});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&ov.classList.contains("on")){e.preventDefault();closeK()}});
+</script>
+</body>
+</html>
